@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace csharpcore
 {
@@ -29,14 +30,14 @@ namespace csharpcore
 
     public class ItemUpdater
     {
-        private Item item;
+        protected Item item;
 
         public ItemUpdater(Item item)
         {
             this.item = item;
         }
 
-        public Item Update()
+        public virtual Item Update()
         {
             if (item.Name == GildedRose.SpecialCase.AgedBrie)
             {
@@ -89,7 +90,7 @@ namespace csharpcore
 
             if (item.Name == GildedRose.SpecialCase.Sulfurus)
             {
-                return item;
+                return new SulfurusUpdater(item).Update();
             }
 
             if (item.Quality > 0)
@@ -108,6 +109,18 @@ namespace csharpcore
             }
 
             return item;
+        }
+    }
+
+    public class SulfurusUpdater : ItemUpdater
+    {
+        public SulfurusUpdater(Item item) : base(item)
+        {
+        }
+
+        public override Item Update()
+        {
+            return this.item;
         }
     }
 }
