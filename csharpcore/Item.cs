@@ -40,12 +40,12 @@
             }
         }
 
-        protected void Reset()
+        protected void reset()
         {
             item.Quality = 0;
         }
 
-        protected void DecreaseQuality()
+        protected void decreaseQuality()
         {
             if (item.Quality <= 0)
             {
@@ -116,7 +116,7 @@
 
             if (item.SellIn < 0)
             {
-                this.Reset();
+                this.reset();
             }
 
             return item;
@@ -129,13 +129,13 @@
 
         public override Item Update()
         {
-            this.DecreaseQuality();
+            this.decreaseQuality();
 
             item.SellIn = item.SellIn - 1;
 
             if (item.SellIn < 0)
             {
-                this.DecreaseQuality();
+                this.decreaseQuality();
             }
 
             return item;
