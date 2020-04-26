@@ -89,6 +89,19 @@ defmodule GildedRoseTest do
     assert updated.days_remaining == 10
   end
 
+  test "Aged increase by 2 if days_remaining is zero" do
+    item = %Item{
+      name: "Aged Brie",
+      days_remaining: 0,
+      quality: 1
+    }
+
+    updated = GildedRose.update_item(item)
+
+    assert updated.days_remaining == -1
+    assert updated.quality == 3
+  end
+
   test "Backstage quality when days_remaing >= 11" do
     item = %Item{
       name: "Backstage passes to a TAFKAL80ETC concert",
@@ -191,5 +204,21 @@ defmodule GildedRoseTest do
 
     assert updated.days_remaining == 4
     assert updated.quality == 49
+  end
+
+  test "Reset quality to zero for Backstage if days_remaining < 0" do
+    item = %Item{
+      name: "Backstage passes to a TAFKAL80ETC concert",
+      days_remaining: -1,
+      quality: 20
+    }
+
+    expected = %Item{
+      name: "Backstage passes to a TAFKAL80ETC concert",
+      days_remaining: -2,
+      quality: 0
+    }
+
+    assert expected == GildedRose.update_item(item)
   end
 end
