@@ -1,5 +1,19 @@
 # Gilded Rose Refactoring Kata
 
+My attempt to solved Gilded Rose in multiple languages.
+
+I want to understand exactly how different programming paradigm (Functional, Object-oriented) and different language construct affect how we structured program.
+
+Now focus on:
+
+- CSharp for Typed object-oriented paradigm.
+- Elixir for Non-typed functional paradigm.
+- TypeScript for typed multi paradigm.
+
+Interesting in using Common-Lisp (Since Clojure version is not exists yet. Maybe I should create one.) and FSharp for Typed functional paradigm.
+
+## Original words
+
 This Kata was originally created by Terry Hughes (http://twitter.com/TerryHughes). It is already on GitHub [here](https://github.com/NotMyself/GildedRose). See also [Bobby Johnson's description of the kata](http://iamnotmyself.com/2011/02/13/refactor-this-the-gilded-rose-kata/).
 
 I translated the original C# into a few other languages, (with a little help from my friends!), and slightly changed the starting position. This means I've actually done a small amount of refactoring already compared with the original form of the kata, and made it easier to get going with writing tests by giving you one failing unit test to start with. I also added test fixtures for Text-Based approval testing with TextTest (see [the TextTests](https://github.com/emilybache/GildedRose-Refactoring-Kata/tree/master/texttests))
@@ -18,7 +32,7 @@ You could write some unit tests yourself, using the requirements to identify sui
 
 Alternatively, use the "Text-Based" tests provided in this repository. (Read more about that in the next section)
 
-Whichever testing approach you choose, the idea of the exercise is to do some deliberate practice, and improve your skills at designing test cases and refactoring. The idea is not to re-write the code from scratch, but rather to practice designing tests, taking small steps, running the tests often, and incrementally improving the design. 
+Whichever testing approach you choose, the idea of the exercise is to do some deliberate practice, and improve your skills at designing test cases and refactoring. The idea is not to re-write the code from scratch, but rather to practice designing tests, taking small steps, running the tests often, and incrementally improving the design.
 
 ## Text-Based Approval Testing
 
@@ -34,7 +48,8 @@ The Text-Based tests in this repository are designed to be used with the tool "T
 
 I've also set this kata up on [cyber-dojo](https://cyber-dojo.org) for several languages, so you can get going really quickly:
 
-To create an *individual* exercise:
+To create an _individual_ exercise:
+
 - [C#, NUnit](https://cyber-dojo.org/forker/fork_individual/Fz4xFX?index=3)
 - [C++ (g++), GoogleTest](https://cyber-dojo.org/forker/fork_individual/qPPrZy?index=7)
 - [Java, Cucumber](https://cyber-dojo.org/forker/fork_individual/SvUf30?index=2) - for this one I've also written some step definitions for you
@@ -43,7 +58,8 @@ To create an *individual* exercise:
 - [Ruby, RSpec](https://cyber-dojo.org/forker/fork_individual/D3xbUV?index=3)
 - [Ruby, testunit](https://cyber-dojo.org/forker/fork_individual/zlElgj?index=9)
 
-To create a *group* exercise:
+To create a _group_ exercise:
+
 - [C#, NUnit](https://cyber-dojo.org/forker/fork_group/Fz4xFX?index=3)
 - [C++ (g++), GoogleTest](https://cyber-dojo.org/forker/fork_group/qPPrZy?index=7)
 - [Java, Cucumber](https://cyber-dojo.org/forker/fork_group/SvUf30?index=2) - for this one I've also written some step definitions for you
@@ -56,4 +72,4 @@ To create a *group* exercise:
 
 I analysed this repo according to the clean code standards on [Better Code Hub](https://bettercodehub.com) just to get an independent opinion of how bad the code is. Perhaps unsurprisingly, the compliance score is low!
 
-[![BCH compliance](https://bettercodehub.com/edge/badge/emilybache/GildedRose-Refactoring-Kata?branch=master)](https://bettercodehub.com/) 
+[![BCH compliance](https://bettercodehub.com/edge/badge/emilybache/GildedRose-Refactoring-Kata?branch=master)](https://bettercodehub.com/)
