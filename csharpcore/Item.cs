@@ -3,6 +3,14 @@
     public class Item
     {
         private const int MAX_QUALITY = 50;
+
+        public static class SpecialCase
+        {
+            public const string AgedBrie = "Aged Brie";
+            public const string Backstage = "Backstage passes to a TAFKAL80ETC concert";
+            public const string Sulfurus = "Sulfuras, Hand of Ragnaros";
+        }
+
         public string Name { get; set; }
         public int SellIn { get; set; }
         public int Quality { get; set; }
@@ -11,13 +19,13 @@
         {
             switch (this.Name)
             {
-                case GildedRose.SpecialCase.AgedBrie:
+                case SpecialCase.AgedBrie:
                     new AgedBrieUpdater(this).Update();
                     return;
-                case GildedRose.SpecialCase.Backstage:
+                case SpecialCase.Backstage:
                     new BackStageUpdater(this).Update();
                     return;
-                case GildedRose.SpecialCase.Sulfurus:
+                case SpecialCase.Sulfurus:
                     new SulfurusUpdater(this).Update();
                     return;
                 default:

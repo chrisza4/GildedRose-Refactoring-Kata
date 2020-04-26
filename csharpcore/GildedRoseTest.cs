@@ -41,11 +41,11 @@ namespace csharpcore
         [Fact]
         public void AgedBreidLessThan50()
         {
-            IList<Item> Items = new List<Item> { new Item { Name = GildedRose.SpecialCase.AgedBrie, SellIn = 3, Quality = 3 } };
+            IList<Item> Items = new List<Item> { new Item { Name = Item.SpecialCase.AgedBrie, SellIn = 3, Quality = 3 } };
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
 
-            Assert.Equal(GildedRose.SpecialCase.AgedBrie, Items[0].Name);
+            Assert.Equal(Item.SpecialCase.AgedBrie, Items[0].Name);
             Assert.Equal(2, Items[0].SellIn);
             Assert.Equal(4, Items[0].Quality);
         }
@@ -53,11 +53,11 @@ namespace csharpcore
         [Fact]
         public void AgedBrieMoreThan50SellInMoreThan0()
         {
-            IList<Item> Items = new List<Item> { new Item { Name = GildedRose.SpecialCase.AgedBrie, SellIn = 3, Quality = 51 } };
+            IList<Item> Items = new List<Item> { new Item { Name = Item.SpecialCase.AgedBrie, SellIn = 3, Quality = 51 } };
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
 
-            Assert.Equal(GildedRose.SpecialCase.AgedBrie, Items[0].Name);
+            Assert.Equal(Item.SpecialCase.AgedBrie, Items[0].Name);
             Assert.Equal(2, Items[0].SellIn);
             Assert.Equal(51, Items[0].Quality);
         }
@@ -65,11 +65,11 @@ namespace csharpcore
         [Fact]
         public void AgedBrieMoreThan50SellInLessThan0()
         {
-            IList<Item> Items = new List<Item> { new Item { Name = GildedRose.SpecialCase.AgedBrie, SellIn = -1, Quality = 51 } };
+            IList<Item> Items = new List<Item> { new Item { Name = Item.SpecialCase.AgedBrie, SellIn = -1, Quality = 51 } };
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
 
-            Assert.Equal(GildedRose.SpecialCase.AgedBrie, Items[0].Name);
+            Assert.Equal(Item.SpecialCase.AgedBrie, Items[0].Name);
             Assert.Equal(-2, Items[0].SellIn);
             Assert.Equal(51, Items[0].Quality);
         }
@@ -79,7 +79,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> {
                 new Item {
-                    Name = GildedRose.SpecialCase.Sulfurus,
+                    Name = Item.SpecialCase.Sulfurus,
                     SellIn = 1,
                     Quality = 1
                 }
@@ -87,7 +87,7 @@ namespace csharpcore
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
 
-            Assert.Equal(GildedRose.SpecialCase.Sulfurus, Items[0].Name);
+            Assert.Equal(Item.SpecialCase.Sulfurus, Items[0].Name);
             Assert.Equal(1, Items[0].SellIn);
             Assert.Equal(1, Items[0].Quality);
         }
@@ -97,7 +97,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> {
                 new Item {
-                    Name = GildedRose.SpecialCase.Sulfurus,
+                    Name = Item.SpecialCase.Sulfurus,
                     SellIn = -1,
                     Quality = -1
                 }
@@ -105,7 +105,7 @@ namespace csharpcore
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
 
-            Assert.Equal(GildedRose.SpecialCase.Sulfurus, Items[0].Name);
+            Assert.Equal(Item.SpecialCase.Sulfurus, Items[0].Name);
             Assert.Equal(-1, Items[0].SellIn);
             Assert.Equal(-1, Items[0].Quality);
         }
@@ -115,7 +115,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> {
                 new Item {
-                    Name = GildedRose.SpecialCase.Sulfurus,
+                    Name = Item.SpecialCase.Sulfurus,
                     SellIn = 0,
                     Quality = 50
                 }
@@ -123,7 +123,7 @@ namespace csharpcore
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
 
-            Assert.Equal(GildedRose.SpecialCase.Sulfurus, Items[0].Name);
+            Assert.Equal(Item.SpecialCase.Sulfurus, Items[0].Name);
             Assert.Equal(0, Items[0].SellIn);
             Assert.Equal(50, Items[0].Quality);
         }
@@ -133,7 +133,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> {
                 new Item {
-                    Name = GildedRose.SpecialCase.Backstage,
+                    Name = Item.SpecialCase.Backstage,
                     SellIn = 0,
                     Quality = 4
                 }
@@ -141,7 +141,7 @@ namespace csharpcore
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
 
-            Assert.Equal(GildedRose.SpecialCase.Backstage, Items[0].Name);
+            Assert.Equal(Item.SpecialCase.Backstage, Items[0].Name);
             Assert.Equal(-1, Items[0].SellIn);
             Assert.Equal(0, Items[0].Quality);
         }
@@ -151,7 +151,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> {
                 new Item {
-                    Name = GildedRose.SpecialCase.Backstage,
+                    Name = Item.SpecialCase.Backstage,
                     SellIn = -3,
                     Quality = 20
                 }
@@ -159,7 +159,7 @@ namespace csharpcore
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
 
-            Assert.Equal(GildedRose.SpecialCase.Backstage, Items[0].Name);
+            Assert.Equal(Item.SpecialCase.Backstage, Items[0].Name);
             Assert.Equal(-4, Items[0].SellIn);
             Assert.Equal(0, Items[0].Quality);
         }
@@ -169,7 +169,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> {
                 new Item {
-                    Name = GildedRose.SpecialCase.Backstage,
+                    Name = Item.SpecialCase.Backstage,
                     SellIn = 4,
                     Quality = 20
                 }
@@ -177,7 +177,7 @@ namespace csharpcore
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
 
-            Assert.Equal(GildedRose.SpecialCase.Backstage, Items[0].Name);
+            Assert.Equal(Item.SpecialCase.Backstage, Items[0].Name);
             Assert.Equal(3, Items[0].SellIn);
             Assert.Equal(23, Items[0].Quality);
         }
@@ -187,7 +187,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> {
                 new Item {
-                    Name = GildedRose.SpecialCase.Backstage,
+                    Name = Item.SpecialCase.Backstage,
                     SellIn = 8,
                     Quality = 20
                 }
@@ -195,7 +195,7 @@ namespace csharpcore
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
 
-            Assert.Equal(GildedRose.SpecialCase.Backstage, Items[0].Name);
+            Assert.Equal(Item.SpecialCase.Backstage, Items[0].Name);
             Assert.Equal(7, Items[0].SellIn);
             Assert.Equal(22, Items[0].Quality);
         }
@@ -205,7 +205,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> {
                 new Item {
-                    Name = GildedRose.SpecialCase.Backstage,
+                    Name = Item.SpecialCase.Backstage,
                     SellIn = 11,
                     Quality = 20
                 }
@@ -213,7 +213,7 @@ namespace csharpcore
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
 
-            Assert.Equal(GildedRose.SpecialCase.Backstage, Items[0].Name);
+            Assert.Equal(Item.SpecialCase.Backstage, Items[0].Name);
             Assert.Equal(10, Items[0].SellIn);
             Assert.Equal(21, Items[0].Quality);
         }
@@ -223,7 +223,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> {
                 new Item {
-                    Name = GildedRose.SpecialCase.Backstage,
+                    Name = Item.SpecialCase.Backstage,
                     SellIn = 4,
                     Quality = 50
                 }
@@ -231,7 +231,7 @@ namespace csharpcore
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
 
-            Assert.Equal(GildedRose.SpecialCase.Backstage, Items[0].Name);
+            Assert.Equal(Item.SpecialCase.Backstage, Items[0].Name);
             Assert.Equal(3, Items[0].SellIn);
             Assert.Equal(50, Items[0].Quality);
         }
@@ -241,7 +241,7 @@ namespace csharpcore
         {
             IList<Item> Items = new List<Item> {
                 new Item {
-                    Name = GildedRose.SpecialCase.Backstage,
+                    Name = Item.SpecialCase.Backstage,
                     SellIn = 4,
                     Quality = 49
                 }
@@ -249,7 +249,7 @@ namespace csharpcore
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
 
-            Assert.Equal(GildedRose.SpecialCase.Backstage, Items[0].Name);
+            Assert.Equal(Item.SpecialCase.Backstage, Items[0].Name);
             Assert.Equal(3, Items[0].SellIn);
             Assert.Equal(50, Items[0].Quality);
         }
