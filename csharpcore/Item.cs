@@ -17,34 +17,36 @@
 
         public void Update()
         {
-            var updates = this.getUpdater().Update();
+            var updates = this.getItemUpdates();
+            updates.Update();
+
             this.SellIn = updates.SellIn;
             this.Quality = updates.Quality;
         }
 
-        private ItemUpdater getUpdater()
+        private ItemUpdates getItemUpdates()
         {
             switch (this.Name)
             {
                 case SpecialCase.AgedBrie:
-                    return new AgedBrieUpdater(this);
+                    return new AgedBrieUpdates(this);
                 case SpecialCase.Backstage:
-                    return new BackStageUpdater(this);
+                    return new BackStageUpdates(this);
                 case SpecialCase.Sulfurus:
-                    return new SulfurusUpdater(this);
+                    return new SulfurusUpdates(this);
                 default:
-                    return new NormalUpdater(this);
+                    return new NormalUpdates(this);
             }
         }
     }
 
-    public class ItemUpdates
+    public abstract class ItemUpdates
     {
         public int SellIn { get; set; }
         public int Quality { get; set; }
         private const int MAX_QUALITY = 50;
 
-        public void PromotionalIncrement()
+        protected void PromotionalIncrement()
         {
             if (this.Quality < MAX_QUALITY)
             {
@@ -52,12 +54,12 @@
             }
         }
 
-        public void Reset()
+        protected void Reset()
         {
             this.Quality = 0;
         }
 
-        public void DecreaseQuality()
+        protected void DecreaseQuality()
         {
             if (this.Quality <= 0)
             {
@@ -66,99 +68,84 @@
 
             this.Quality--;
         }
-    }
 
-    public abstract class ItemUpdater
-    {
-        protected ItemUpdates itemUpdates;
-        private const int MAX_QUALITY = 50;
-
-        public ItemUpdater(Item item)
+        public ItemUpdates(Item item)
         {
-            this.itemUpdates = new ItemUpdates()
-            {
-                SellIn = item.SellIn,
-                Quality = item.Quality
-            };
+            this.SellIn = item.SellIn;
+            this.Quality = item.Quality;
         }
 
-        public abstract ItemUpdates Update();
+        public abstract void Update();
     }
 
-    public class SulfurusUpdater : ItemUpdater
+    public class SulfurusUpdates : ItemUpdates
     {
-        public SulfurusUpdater(Item item) : base(item) { }
+        public SulfurusUpdates(Item item) : base(item) { }
 
-        public override ItemUpdates Update()
+        public override void Update()
         {
-            return this.itemUpdates;
+            // No-op
         }
     }
 
-    public class AgedBrieUpdater : ItemUpdater
+    public class AgedBrieUpdates : ItemUpdates
     {
-        public AgedBrieUpdater(Item item) : base(item) { }
+        public AgedBrieUpdates(Item item) : base(item) { }
 
-        public override ItemUpdates Update()
+        public override void Update()
         {
-            itemUpdates.SellIn = itemUpdates.SellIn - 1;
+            this.SellIn = this.SellIn - 1;
 
-            itemUpdates.PromotionalIncrement();
+            this.PromotionalIncrement();
 
-            if (itemUpdates.SellIn < 0)
+            if (this.SellIn < 0)
             {
-                itemUpdates.PromotionalIncrement();
+                this.PromotionalIncrement();
             }
-
-            return itemUpdates;
         }
     }
 
-    public class BackStageUpdater : ItemUpdater
+    public class BackStageUpdates : ItemUpdates
     {
-        public BackStageUpdater(Item item) : base(item) { }
+        public BackStageUpdates(Item item) : base(item) { }
 
-        public override ItemUpdates Update()
+        public override void Update()
         {
-            itemUpdates.PromotionalIncrement();
+            this.PromotionalIncrement();
 
-            if (itemUpdates.SellIn < 6)
+            if (this.SellIn < 6)
             {
-                itemUpdates.PromotionalIncrement();
+                this.PromotionalIncrement();
             }
 
-            if (itemUpdates.SellIn < 11)
+            if (this.SellIn < 11)
             {
-                itemUpdates.PromotionalIncrement();
+                this.PromotionalIncrement();
             }
 
-            itemUpdates.SellIn = itemUpdates.SellIn - 1;
+            this.SellIn = this.SellIn - 1;
 
-            if (itemUpdates.SellIn < 0)
+            if (this.SellIn < 0)
             {
-                itemUpdates.Reset();
+                this.Reset();
             }
-
-            return itemUpdates;
         }
     }
 
-    public class NormalUpdater : ItemUpdater
+    public class NormalUpdates : ItemUpdates
     {
-        public NormalUpdater(Item item) : base(item) { }
+        public NormalUpdates(Item item) : base(item) { }
 
-        public override ItemUpdates Update()
+        public override void Update()
         {
-            itemUpdates.DecreaseQuality();
+            this.DecreaseQuality();
 
-            itemUpdates.SellIn = itemUpdates.SellIn - 1;
+            this.SellIn = this.SellIn - 1;
 
-            if (itemUpdates.SellIn < 0)
+            if (this.SellIn < 0)
             {
-                itemUpdates.DecreaseQuality();
+                this.DecreaseQuality();
             }
-
-            return itemUpdates;
         }
 
     }
