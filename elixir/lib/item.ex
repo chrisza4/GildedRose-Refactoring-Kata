@@ -1,3 +1,3 @@
 defmodule Item do
-  defstruct name: nil, sell_in: nil, quality: nil
+  defstruct name: nil, days_remaining: nil, quality: nil
 end
